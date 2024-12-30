@@ -29,11 +29,11 @@ class BinaryTree:
     def __init__(self, show_rotation: bool = False):
         self.root: TreeNode | None = None
 
-    def build_from_leetcode_list(self, values: list[int | None]) -> None:
+    def build_from_leetcode_list(self, values: list) -> None:
         self.root = None
         self.root = self._build_from_leetcode_list(values, 0)
 
-    def _build_from_leetcode_list(self, values: list[int | None], index: int) -> TreeNode | None:
+    def _build_from_leetcode_list(self, values: list, index: int) -> TreeNode | None:
         if index >= len(values) or values[index] is None:
             return None
 
@@ -53,7 +53,7 @@ class BinaryTree:
             return 0
         return node.height
 
-    def convert_to_leetcode_list(self, root: TreeNode | None = None) -> list[int | None]:
+    def convert_to_leetcode_list(self, root: TreeNode | None = None) -> list:
         if root is None:
             if self.root is None:
                 return []
@@ -79,10 +79,10 @@ class BinaryTree:
         print(bt.build(self.convert_to_leetcode_list(node)))
 
     @property
-    def preorder(self) -> list[int]:
+    def preorder(self) -> list:
         return self._preorder(self.root)
 
-    def _preorder(self, node: TreeNode | None) -> list[int]:
+    def _preorder(self, node: TreeNode | None) -> list:
         if node is None:
             return []
 
@@ -93,10 +93,10 @@ class BinaryTree:
         return result
 
     @property
-    def inorder(self) -> list[int]:
+    def inorder(self) -> list:
         return self._inorder(self.root)
 
-    def _inorder(self, node: TreeNode | None) -> list[int]:
+    def _inorder(self, node: TreeNode | None) -> list:
         if node is None:
             return []
 
@@ -107,10 +107,10 @@ class BinaryTree:
         return result
 
     @property
-    def postorder(self) -> list[int]:
+    def postorder(self) -> list:
         return self._postorder(self.root)
 
-    def _postorder(self, node: TreeNode | None) -> list[int]:
+    def _postorder(self, node: TreeNode | None) -> list:
         if node is None:
             return []
 
