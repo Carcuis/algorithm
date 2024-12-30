@@ -9,6 +9,7 @@ class AVLTree(BinaryTree):
     def build_from_list(self, values: list[int]) -> None:
         self.root = None
         for value in values:
+            assert isinstance(value, int), f"Invalid value: {value}"
             if value is not None:
                 self.root = self._insert(self.root, value)
 
