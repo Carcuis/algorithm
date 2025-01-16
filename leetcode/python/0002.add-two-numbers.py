@@ -1,19 +1,9 @@
 import unittest
 
-
-class ListNode:
-    def __init__(self, val: int = 0, next: "ListNode | None" = None) -> None:
-        self.val = val
-        self.next = next
+from util.linked_list import ListNode, array_to_list, list_to_array
 
 
 # @leet start
-# Definition for singly-linked list.
-# class ListNode:
-#     def __init__(self, val=0, next=None):
-#         self.val = val
-#         self.next = next
-
 class Solution:
     def addTwoNumbers(self, l1: ListNode | None, l2: ListNode | None) -> ListNode | None:
         def _add(l: ListNode | None, r: ListNode | None, carry: int) -> tuple[ListNode | None, int]:
@@ -34,42 +24,25 @@ class Solution:
 class Test(unittest.TestCase):
     add = Solution().addTwoNumbers
 
-    def list_to_array(self, node: ListNode | None) -> list[int]:
-        array = []
-        while node:
-            array.append(node.val)
-            node = node.next
-        return array
-
-    def array_to_list(self, array: list[int]) -> ListNode | None:
-        if not array:
-            return None
-        head = ListNode(array[0])
-        current = head
-        for val in array[1:]:
-            current.next = ListNode(val)
-            current = current.next
-        return head
-
     def test_1(self):
-        l1 = self.array_to_list([2, 4, 3])
-        l2 = self.array_to_list([5, 6, 4])
-        self.assertEqual(self.list_to_array(self.add(l1, l2)), [7, 0, 8])
+        l1 = array_to_list([2, 4, 3])
+        l2 = array_to_list([5, 6, 4])
+        self.assertEqual(list_to_array(self.add(l1, l2)), [7, 0, 8])
 
     def test_2(self):
-        l1 = self.array_to_list([0])
-        l2 = self.array_to_list([0])
-        self.assertEqual(self.list_to_array(self.add(l1, l2)), [0])
+        l1 = array_to_list([0])
+        l2 = array_to_list([0])
+        self.assertEqual(list_to_array(self.add(l1, l2)), [0])
 
     def test_3(self):
-        l1 = self.array_to_list([9, 9, 9, 9, 9, 9, 9])
-        l2 = self.array_to_list([9, 9, 9, 9])
-        self.assertEqual(self.list_to_array(self.add(l1, l2)), [8, 9, 9, 9, 0, 0, 0, 1])
+        l1 = array_to_list([9, 9, 9, 9, 9, 9, 9])
+        l2 = array_to_list([9, 9, 9, 9])
+        self.assertEqual(list_to_array(self.add(l1, l2)), [8, 9, 9, 9, 0, 0, 0, 1])
 
     def test_4(self):
-        l1 = self.array_to_list([2, 4, 9])
-        l2 = self.array_to_list([5, 6, 4, 9])
-        self.assertEqual(self.list_to_array(self.add(l1, l2)), [7, 0, 4, 0, 1])
+        l1 = array_to_list([2, 4, 9])
+        l2 = array_to_list([5, 6, 4, 9])
+        self.assertEqual(list_to_array(self.add(l1, l2)), [7, 0, 4, 0, 1])
 
 
 if __name__ == '__main__':
